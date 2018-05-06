@@ -1,2 +1,14 @@
 $basic: #484848;
 $border: rgb(228, 228, 228);
+
+body {
+  font-family: "ヒラギノ角ゴ Pro","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,Osaka,"ＭＳ Ｐゴシック","MS PGothic","MS Gothic","ＭＳ ゴシック","Helvetica Neue",Helvetica,Arial,sans-serif !important;
+  font-size: 14px;
+  line-height: 1.43;
+  color: $basic;
+  background-color: #fff;
+
+  h4 {
+    font-weight: bold;
+  }
+}
