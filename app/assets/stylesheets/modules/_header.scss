@@ -1,0 +1,129 @@
+.header {
+  height: 80px;
+  border-bottom: 1px solid $border;
+  color: $basic;
+  font-size: 14px;
+  &-logo {
+    height: 80px;
+    float: left;
+    &__icon {
+      height: 34px;
+      width: 34px;
+      margin: 23px 24px;
+    }
+  }
+  &-search-form {
+    width: calc(100vw - 736px);
+    height: 80px;
+    float: left;
+    &-mask{
+      width: 460px;
+      height: 50px;
+      position: absolute;
+      top: 16px;
+      right: 12px;
+      bottom: 14px;
+      left: 90px;
+      color: $basic !important;
+      border-radius: 4px;
+      border: 1px solid $border;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      &__icon {
+        font-size: 24px !important;
+        color: $basic;
+        width: 33px;
+        height: 24px;
+        padding-top: 11px;
+        padding-left: 12px;
+        display: inline-block;
+        float: left;
+      }
+      &__text-area {
+        font-size: 19px;
+        line-height: 24px;
+        width: calc(100% - 45px);
+        height: 50px;
+        border: none;
+        display: inline-block;
+        float: left;
+      }
+    }
+  }
+
+  &-menu {
+    float: right;
+
+    &-lists {
+      display: table;
+      line-height: 80px;
+
+      %__list {
+        display: table-cell;
+        padding: 0 8px;
+      }
+
+      &__list {
+        @extend %__list;
+
+        &--user {
+          @extend %__list;
+          font-size: 28px;
+        }
+
+        &-button {
+          height: 78px;
+          font-size: 14px;
+          color: $basic;
+          background-color: #FFF;
+          border: none;
+          cursor: pointer;
+          &:hover {
+            border-bottom: 2px solid $basic;
+          }
+        }
+      }
+    }
+  }
+
+  &-user {
+    float: right;
+    padding: 0 8px;
+    margin-right: 8px;
+    line-height: 78px;
+    font-size: 28px;
+    cursor: pointer;
+    &:hover ul.header-user-lists {
+      display: block;
+    }
+    ul.header-user-lists {
+      position: absolute;
+      // text-align: left;
+      width: 280px;
+      right: 0;
+      border-width: 1px 1px 1px !important;
+      border-style: none solid solid !important;
+      border-color: $border !important;
+      border-top: none !important;
+      font-size: 14px;
+      color: $basic;
+      background-color: #fff;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px !important;
+      border: 1px solid $border;
+      display: none;
+      li {
+        padding: 0 16px;
+        line-height: 50px;
+        &:last-child {
+          border-bottom: 0;
+        }
+        a {
+          display: block;
+          border-bottom: 1px solid $border;
+          &:hover {
+            border-bottom: 1px solid $basic;
+          }
+        }
+      }
+    }
+  }
+}

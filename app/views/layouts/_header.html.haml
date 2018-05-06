@@ -1,1 +1,27 @@
+.header
+  .header-logo
+    = link_to image_tag('logo.jpg', class: 'header-logo__icon'), root_path
+  .header-search-form
+    .header-search-form-mask
+      = fa_icon 'search', class: 'header-search-form-mask__icon'
+      %form{action: '/', method: 'post'}
+        %input{type: 'text', placeholder: '「東京」などエリアを入力', class: 'header-search-form-mask__text-area'}
+  .header-user
+    = fa_icon 'user-circle'
+    %ul.header-user-lists
+      %li.header-user-lists__list= link_to 'プロフィールを編集', '/#'
+      %li.header-user-lists__list= link_to '友達を招待', '/#'
+      %li.header-user-lists__list= link_to 'アカウントの設定', '/#'
+      %li.header-user-lists__list= link_to 'マイガイドブック', '/#'
+      %li.header-user-lists__list= link_to 'Airbnb法人プログラム', '/#'
+      %li.header-user-lists__list= link_to 'ログアウト', '/#'
+  .header-menu
+    %ul.header-menu-lists
+      %li.header-menu-lists__list= link_to button_tag('お部屋お掲載', class: 'header-menu-lists__list-button'), '/#'
+      %li.header-menu-lists__list= link_to button_tag('ホスト', class: 'header-menu-lists__list-button'), '/#'
+      %li.header-menu-lists__list= link_to button_tag('お気に入り', class: 'header-menu-lists__list-button'), '/#'
+      %li.header-menu-lists__list= link_to button_tag('旅行', class: 'header-menu-lists__list-button'), '/#'
+      %li.header-menu-lists__list= link_to button_tag('メッセージ', class: 'header-menu-lists__list-button'), '/#'
+      %li.header-menu-lists__list= link_to button_tag('クーポン', class: 'header-menu-lists__list-button'), '/#'
+      %li.header-menu-lists__list= link_to button_tag('ヘルプ', class: 'header-menu-lists__list-button'), '/#'
 
