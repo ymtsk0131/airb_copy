@@ -122,5 +122,30 @@ select {
 legend {
     color:#000;
 }
+
+a:link {
+      color: #484848;
+      text-decoration: none;
+}
+// 上の例は下線も何も付いていない状態ですが、下線を付けたりしたい場合はtext-decorationの値を、underline（下線）、overline（オーバーライン）、line-through（取り消し線）、blink（点滅）などに変えましょう。
+
+// 訪問済みリンクの設定です。
+a:visited {
+      color: #484848;
+      text-decoration: none;
+}
+// リンクが付いている箇所をロールオーバーした時の設定です。
+a:hover {
+      color: #484848;
+      text-decoration: none;
+}
+// 次に、画像にリンクを張った時画像の周りにボーダーができてしまうので、これ消去します。
+a img {
+      border-width: 0px;
+      border-style: none;
+      border-color: #fff;
+      background: transparent;
+}
+
 /* YUI CSS Detection Stamp */
 #yui3-css-stamp.cssreset { display: none; }
