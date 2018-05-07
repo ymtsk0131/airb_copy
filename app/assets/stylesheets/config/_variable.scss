@@ -1,5 +1,6 @@
-$basic: #484848;
+$basic: rgb(72, 72, 72);
 $border: rgb(228, 228, 228);
+$green: rgb(0, 132, 137);
 
 body {
   font-family: "ヒラギノ角ゴ Pro","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,Osaka,"ＭＳ Ｐゴシック","MS PGothic","MS Gothic","ＭＳ ゴシック","Helvetica Neue",Helvetica,Arial,sans-serif !important;
@@ -8,7 +9,37 @@ body {
   color: $basic;
   background-color: #fff;
 
+  h2 {
+    font-size: 48px;
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: 28px;
+    margin: 2px 0;
+    color: $basic;
+    font-weight: bold;
+  }
+
   h4 {
     font-weight: bold;
   }
+
+  h4.feature {
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+    font-size: 19px !important;
+    line-height: 24px !important;
+    padding-top: 0px !important;
+    padding-bottom: 15px;
+    font-weight: 300 !important;
+    margin-top: 0px !important;
+  }
+}
+
+.view-all {
+  text-align: left;
+  width: 100%;
+  padding: 8px;
+  font-size: 17px;
+  color: $green;
 }
