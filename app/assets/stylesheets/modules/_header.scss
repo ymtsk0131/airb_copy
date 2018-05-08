@@ -3,6 +3,10 @@
   border-bottom: 1px solid $border;
   color: $basic;
   font-size: 14px;
+  background-color: #FFF;
+  position: fixed;
+  top: 0;
+  z-index: 5;
   &-logo {
     height: 80px;
     float: left;
