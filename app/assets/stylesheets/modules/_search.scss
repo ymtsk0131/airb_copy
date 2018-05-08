@@ -1,0 +1,23 @@
+.search {
+  padding: 32px 0 0;
+
+  &__element {
+    width: 287.5px;
+    height: 72px;
+    margin: 8px;
+    border: 1px solid $border;
+    display: inline-block;
+    cursor: pointer;
+
+    img {
+      width: 96px;
+      height: 72px;
+      float: left;
+    }
+    p {
+      font-size: 17px;
+      padding: 23px 16px;
+      float: left;
+    }
+  }
+}
