@@ -1,0 +1,79 @@
+.registration {
+  width: 568px;
+  padding: 32px;
+  margin: 0 auto;
+
+  h3 {
+    margin-bottom: 24px;
+  }
+
+  &__form {
+    @extend %field;
+    position: relative;
+    display: block;
+    width: 100%;
+
+    &-field {
+      @extend %form;
+      width: calc(100% - 52px);
+    }
+
+    &-icon {
+      position: absolute;
+      right: 11px;
+      z-index: 3;
+      font-size: 19px !important;
+      color: $basic;
+      line-height: 46px !important;
+    }
+  }
+
+  &__label {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 8px;
+  }
+
+  p {
+    margin-bottom: 8px;
+  }
+
+  select {
+    @extend %field;
+    display: inline-block;
+    height: 46px;
+    color: $basic;
+  }
+
+  &__submit {
+    cursor: pointer;
+    display: block;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    font-size: 19px;
+    line-height: 22px;
+    padding: 12px 24px;
+    color: #FFF;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+    border-radius: 4px;
+    border-width: 2px;
+    border-style: solid;
+    background: rgb(255, 90, 95);
+    border-color: transparent;
+  }
+
+  &__bottom-message {
+    font-size: 16px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid $border;
+    text-align: center;
+
+    a {
+      color: $green;
+    }
+  }
+}
