@@ -1,36 +1,93 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div
-      Currently waiting confirmation for: #{resource.unconfirmed_email}
-  .field
-    = f.label :password
-    %i (leave blank if you don't want to change it)
-    %br/
-    = f.password_field :password, autocomplete: "off"
-    - if @minimum_password_length
-      %br/
-      %em
-        = @minimum_password_length
-        characters minimum
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .field
-    = f.label :current_password
-    %i (we need your current password to confirm your changes)
-    %br/
-    = f.password_field :current_password, autocomplete: "off"
-  .actions
-    = f.submit "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-= link_to "Back", :back
+.main
+  .edit-user.clearfix
+    .edit-user-left-content
+      .edit-user-left-content__list
+        %ul
+          %li プロフィールを編集
+          %li 写真
+          %li 信頼＆認証確認
+          %li レビュー
+          %li 紹介文
+      .edit-user-left-content__button
+        プロフィールを見る
+    .edit-user-right-content
+      .edit-user-right-content__title
+        必須項目
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+        = devise_error_messages!
+        .edit-user-right-content__main
+          .edit-user-right-content__main-field.clearfix
+            .edit-user-right-content__main-field-left
+              = f.label :email, class: 'label'
+            .edit-user-right-content__main-field-right
+              = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form'
+          .edit-user-right-content__main-field.clearfix
+            .edit-user-right-content__main-field-left
+              = f.label :firstname, class: 'label'
+            .edit-user-right-content__main-field-right
+              = f.text_field :firstname, class: 'form'
+          .edit-user-right-content__main-field.clearfix
+            .edit-user-right-content__main-field-left
+              = f.label :lastname, class: 'label'
+            .edit-user-right-content__main-field-right
+              = f.text_field :lastname,class: 'form'
+              %span.message 公開用プロフィールにはファーストネームのみ表示されます。予約をリクエストする際、ホストにはフルネームが表示されます。
+          / .edit-user-right-content__main-field.clearfix
+          /   .edit-user-right-content__main-field-left
+          /     = f.label :password, class: 'label'
+          /   .edit-user-right-content__main-field-right
+          /     = f.password_field :password, autocomplete: "password", class: 'form'
+          / .edit-user-right-content__main-field.clearfix
+          /   .edit-user-right-content__main-field-left
+          /     = f.label :password_confirmation, class: 'label'
+          /   .edit-user-right-content__main-field-right
+          /     = f.password_field :password_confirmation, autocomplete: "password_confirmation", class: 'form'
+          .edit-user-right-content__main-field.clearfix
+            .edit-user-right-content__main-field-left
+              = f.label :birthday, class: 'label'
+            .edit-user-right-content__main-field-right
+              = f.date_select :birthday, class: 'form', start_year: 1930, end_year: (Time.now.year - 18), default: Date.new(1989, 1, 1)
+              %span.message あなたがこの世に生を受けた記念すべき日。この大切な個人情報は決して外部使用されることはありませんので、ご安心ください。
+          .edit-user-right-content__main-field.clearfix
+            .edit-user-right-content__main-field-left
+              = f.label :gender, class: 'label'
+            .edit-user-right-content__main-field-right
+              = f.select :gender, User.genders.keys
+              %span.message この情報は解析用です。他ユーザーに共有されることはありません。
+          .edit-user-right-content__main-field.clearfix
+            .edit-user-right-content__main-field-left
+              = f.label :phone, class: 'label'
+            .edit-user-right-content__main-field-right
+              = f.text_field :phone, class: 'form'
+              %span.message この情報は関係者同士の連絡手段。予約確定「後」まで先方のAirbnbユーザーにも秘密です。
+          .edit-user-right-content__main-field.clearfix
+            .edit-user-right-content__main-field-left
+              = f.label :language, class: 'label'
+            .edit-user-right-content__main-field-right
+              = f.select :language, User.languages.keys
+              %span.message 受け取るメッセージの表示言語です。
+          .edit-user-right-content__main-field.clearfix
+            .edit-user-right-content__main-field-left
+              = f.label :currency, class: 'label'
+            .edit-user-right-content__main-field-right
+              = f.select :currency, User.currencies.keys
+              %span.message この通貨で価格を表示します。
+          .edit-user-right-content__main-field.clearfix
+            .edit-user-right-content__main-field-left
+              = f.label :address, class: 'label'
+            .edit-user-right-content__main-field-right
+              = f.text_field :address, placeholder: '例：フランスパリ、ニューヨーク州ブルックリン、イリノイ州シカゴ',class: 'form'
+          .edit-user-right-content__main-field.clearfix
+            .edit-user-right-content__main-field-left
+              = f.label :introduction, class: 'label'
+            .edit-user-right-content__main-field-right
+              = f.text_area :introduction, class: 'form'
+              %span.message Airbnbの基本は人間関係です。自分を知ってもらう努力をしましょう。好きなものを教えてください。これなしでは生きていけないものを5つ挙げるとしたら何ですか？　お気に入りの旅先、本、映画、番組、音楽、食べ物は？
+              %br
+              自分はゲストやホストとしてどうでしょう？
+              %br
+              旅のスタイル（こだわり、流儀）、Airbnbでホストする際のスタルを教えてください。
+              %br
+              自分の人柄も知ってもらいましょう。人生のモットーは何ですか？
+        = f.submit "保存する", class: 'edit-user-right-content__submit'
+        = link_to 'アカウント削除', registration_path(resource_name), method: :delete

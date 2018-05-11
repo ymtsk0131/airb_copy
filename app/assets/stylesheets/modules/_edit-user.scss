@@ -1,0 +1,80 @@
+.edit-user {
+  margin: 24px auto;
+
+  &-left-content {
+    width: calc(25% - 24px);
+    float: left;
+    padding: 0 12px;
+
+    li {
+      font-size: 16px;
+      padding: 6px 0;
+    }
+
+    &__button {
+      @extend %btn-small;
+      margin: 24px 0 0;
+    }
+  }
+
+  &-right-content {
+    width: calc(75% - 24px);
+    float: right;
+    padding: 0 12px;
+
+    &__title {
+      font-size: 16px;
+      padding: 12px;
+      border: $border;
+      background-color: #edefed;
+    }
+
+    &__main {
+      padding: 20px;
+      margin-bottom: 24px;
+      border: $border;
+
+      &-field {
+        margin-bottom: 24px;
+
+        &-left {
+          width: 25%;
+          float: left;
+          text-align: right;
+
+          .label {
+            padding: 0 6px;
+            line-height: 40px;
+          }
+        }
+
+        &-right {
+          width: 75%;
+          float: right;
+
+          .form {
+            padding: 8px 10px;
+            width: calc(100% - 20px);
+          }
+
+          .message {
+            margin-top: 6px;
+            display: block;
+          }
+        }
+
+        select {
+          @extend %field;
+          height: 40px;
+        }
+      }
+    }
+
+    &__submit {
+      @extend %btn-small;
+      background-color: rgb(255, 90, 95);
+      color: #FFF;
+      margin-right: 6px;
+    }
+  }
+}
