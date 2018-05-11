@@ -1,6 +1,7 @@
 $basic: rgb(72, 72, 72);
-$border: rgb(228, 228, 228);
 $green: rgb(0, 132, 137);
+$border: 1px solid rgb(228, 228, 228);
+$red: rgb(255, 90, 95);
 
 body {
   font-family: "ヒラギノ角ゴ Pro","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,Osaka,"ＭＳ Ｐゴシック","MS PGothic","MS Gothic","ＭＳ ゴシック","Helvetica Neue",Helvetica,Arial,sans-serif !important;
@@ -36,6 +37,12 @@ body {
   }
 }
 
+.clearfix::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .main {
   padding: 80px 80px 32px;
 }
@@ -63,4 +70,16 @@ body {
   border: none;
   padding: 11px;
 
+}
+
+%btn-small {
+  padding: 7px 21px;
+  font-size: 14px;
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: bold;
+  cursor: pointer;
 }
