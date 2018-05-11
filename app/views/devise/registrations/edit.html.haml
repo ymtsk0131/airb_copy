@@ -18,11 +18,6 @@
         .edit-user-right-content__main
           .edit-user-right-content__main-field.clearfix
             .edit-user-right-content__main-field-left
-              = f.label :email, class: 'label'
-            .edit-user-right-content__main-field-right
-              = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form'
-          .edit-user-right-content__main-field.clearfix
-            .edit-user-right-content__main-field-left
               = f.label :firstname, class: 'label'
             .edit-user-right-content__main-field-right
               = f.text_field :firstname, class: 'form'
@@ -32,16 +27,6 @@
             .edit-user-right-content__main-field-right
               = f.text_field :lastname,class: 'form'
               %span.message 公開用プロフィールにはファーストネームのみ表示されます。予約をリクエストする際、ホストにはフルネームが表示されます。
-          / .edit-user-right-content__main-field.clearfix
-          /   .edit-user-right-content__main-field-left
-          /     = f.label :password, class: 'label'
-          /   .edit-user-right-content__main-field-right
-          /     = f.password_field :password, autocomplete: "password", class: 'form'
-          / .edit-user-right-content__main-field.clearfix
-          /   .edit-user-right-content__main-field-left
-          /     = f.label :password_confirmation, class: 'label'
-          /   .edit-user-right-content__main-field-right
-          /     = f.password_field :password_confirmation, autocomplete: "password_confirmation", class: 'form'
           .edit-user-right-content__main-field.clearfix
             .edit-user-right-content__main-field-left
               = f.label :birthday, class: 'label'
@@ -54,6 +39,11 @@
             .edit-user-right-content__main-field-right
               = f.select :gender, User.genders.keys
               %span.message この情報は解析用です。他ユーザーに共有されることはありません。
+          .edit-user-right-content__main-field.clearfix
+            .edit-user-right-content__main-field-left
+              = f.label :email, class: 'label'
+            .edit-user-right-content__main-field-right
+              = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form'
           .edit-user-right-content__main-field.clearfix
             .edit-user-right-content__main-field-left
               = f.label :phone, class: 'label'
@@ -89,5 +79,11 @@
               旅のスタイル（こだわり、流儀）、Airbnbでホストする際のスタルを教えてください。
               %br
               自分の人柄も知ってもらいましょう。人生のモットーは何ですか？
+          .edit-user-right-content__main-field.clearfix
+            .edit-user-right-content__main-field-left
+              = f.label :current_password, class: 'label'
+            .edit-user-right-content__main-field-right
+              = f.password_field :current_password, class: 'form'
+              %span.message 確認のためにパスワードを入力してください。
         = f.submit "保存する", class: 'edit-user-right-content__submit'
         = link_to 'アカウント削除', registration_path(resource_name), method: :delete
