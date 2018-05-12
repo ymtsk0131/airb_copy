@@ -1,40 +1,36 @@
 .rooms {
   padding: 32px 0 0;
-  white-space: nowrap;
 
   &__room {
-    width: 25%;
+    width: calc(25% - 20px);
+    padding: 8px 8px 12px;
     display: inline-block;
     cursor: pointer;
 
-    &-padding {
-      padding: 8px 8px 12px;
+    img {
+      width: 100%;
+    }
 
-      img {
-        width: 100%;
+    &-info {
+      padding-top: 8px;
+
+      span {
+        display: block;
+        margin-top: 2px;
       }
 
-      &-info {
-        padding-top: 8px;
+      .room-category {
+        font-size: 12px;
+      }
 
-        span {
-          display: block;
-          margin-top: 2px;
-        }
+      .room-name {
+        font-size: 19px;
+        font-weight: bold;
+      }
 
-        .room-category {
-          font-size: 12px;
-        }
-
-        .room-name {
-          font-size: 19px;
-          font-weight: bold;
-        }
-
-        .room-price {
-          font-size: 15px;
-          font-weight: 300;
-        }
+      .room-price {
+        font-size: 15px;
+        font-weight: 300;
       }
     }
   }
