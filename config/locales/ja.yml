@@ -19,6 +19,8 @@ ja:
         address: "住所"
         introduction: "自己紹介"
         remember_me: "ログイン情報を保存"
+        password: "パスワード"
+        current_password: "現在のパスワード"
   date:
     abbr_day_names:
     - 日
