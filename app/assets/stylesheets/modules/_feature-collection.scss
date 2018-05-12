@@ -1,48 +1,44 @@
 .feature-collection {
   padding: 32px 0 0;
-  white-space: nowrap;
 
   &__element {
-    width: 50%;
+    width: calc(50% - 20px);
+    padding: 0 8px;
     display: inline-block;
     cursor: pointer;
 
-    &-padding {
-      padding: 0px 8px;
+    &-img {
+      position: relative;
 
-      &-img {
-        position: relative;
-
-        img {
-          width: 100%;
-        }
-
-        h2.feature {
-          color: #FFF;
-          position: absolute;
-          width: 100%;
-          text-align: center;
-          top: calc(50% - 24px)
-        }
+      img {
+        width: 100%;
       }
 
-      &-info {
-        padding-top: 8px;
-        white-space: normal;
+      h2.feature {
+        color: #FFF;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        top: calc(50% - 24px)
+      }
+    }
 
-        span {
-          display: block;
-          margin-top: 2px;
-        }
+    &-info {
+      padding-top: 8px;
+      white-space: normal;
 
-        .view-more {
-          font-size: 12px;
-        }
+      span {
+        display: block;
+        margin-top: 2px;
+      }
 
-        .feature-text {
-          font-size: 17px;
-          font-weight: 300;
-        }
+      .view-more {
+        font-size: 12px;
+      }
+
+      .feature-text {
+        font-size: 17px;
+        font-weight: 300;
       }
     }
   }
