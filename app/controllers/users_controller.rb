@@ -5,12 +5,19 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_prams)
+    if @user.update(user_params)
+      redirect_to root
+    else
+      render :edit
+    end
   end
 
   def destroy
-    @user.destroy
-    redirect_to root
+    if @user.destroy
+      redirect_to root
+    else
+      render :edit
+    end
   end
 
   private
