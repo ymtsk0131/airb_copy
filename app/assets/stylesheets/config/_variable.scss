@@ -1,4 +1,5 @@
 $basic: rgb(72, 72, 72);
+$light: #767676;
 $green: rgb(0, 132, 137);
 $border: 1px solid rgb(228, 228, 228);
 $red: rgb(255, 90, 95);
@@ -10,8 +11,13 @@ body {
   color: $basic;
   background-color: #fff;
 
+  h1 {
+    font-size: 44px;
+    font-weight: bold;
+  }
+
   h2 {
-    font-size: 48px;
+    font-size: 32px;
     font-weight: bold;
   }
 
@@ -42,7 +48,7 @@ body {
 }
 
 .main {
-  padding: 80px 80px 32px;
+  margin: 80px 80px 32px;
 }
 
 .view-all {
@@ -80,4 +86,16 @@ body {
   vertical-align: middle;
   font-weight: bold;
   cursor: pointer;
+}
+
+%panel-header {
+  font-size: 16px;
+  padding: 12px;
+  border: $border;
+  background-color: #edefed;
+}
+
+%panel-body {
+  padding: 20px;
+  border: $border;
 }
