@@ -1,0 +1,67 @@
+.main.clearfix
+  .left-content
+    =image_tag('profile.jpg', class: 'profile-img')
+    .left-content__header
+      基本情報
+    .left-content__body
+      %span.item-name
+        言語
+      %span.item
+        = @user.language
+      %span.item-name
+        通貨
+      %span.item
+        = @user.currency
+    .left-content__listing
+      %h2 リスティング(1)
+      .left-content__listing-list
+        =image_tag('sample6.jpg', class: 'listing-img')
+        %span.list-detail
+          The EDO CASTLE
+          %br
+          東京
+  .right-content
+    .right-content__profile
+      %h1
+        こんにちは、
+        = @user.firstname
+        です！
+      %span.overview
+        = @user.address
+        ・
+        = @user.created_at.year
+        年
+        = @user.created_at.month
+        月
+        からメンバー
+      %span.report
+        =fa_icon 'flag'
+        このメンバーを報告
+      %p
+        =@user.introduction
+    .right-content__reviews
+      %h2 レビュー
+      %h4 ゲストからのレビュー
+      .right-content__reviews-review.clearfix
+        .right-content__reviews-review-left
+          %span.review-user
+            =image_tag('nobunaga.jpg', class: 'review-user-img')
+            %span.review-user-name 織田信長
+        .right-content__reviews-review-right
+          %p
+            レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。
+          %span.review-date
+            From 名古屋 · 1570年5月
+      .right-content__reviews-review.clearfix
+        .right-content__reviews-review-left
+          %span.review-user
+            =image_tag('nobunaga.jpg', class: 'review-user-img')
+            %span.review-user-name 織田信長
+        .right-content__reviews-review-right
+          %p
+            レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。レビュー本文です。
+          %span.review-date
+            From 名古屋 · 1570年5月
+
+
+

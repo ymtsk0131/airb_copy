@@ -9,7 +9,7 @@
           %li レビュー
           %li 紹介文
       .edit-user-left-content__button
-        プロフィールを見る
+        = link_to 'プロフィールを見る', user_path(id: current_user.id)
     .edit-user-right-content
       .edit-user-right-content__title
         必須項目
