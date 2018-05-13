@@ -2,3 +2,7 @@
   = form_for(@image) do |f|
     = f.file_field :content
     = f.submit "登録"
+
+  = current_user.user_images.each do |image|
+    = image_tag(image.content)
+    = link_to '削除', user_image_path(id: image.id), method: :delete
