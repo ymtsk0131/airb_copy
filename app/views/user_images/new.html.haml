@@ -1,8 +1,30 @@
 .main
-  = form_for(@image) do |f|
-    = f.file_field :content
-    = f.submit "登録"
-
-  = current_user.user_images.each do |image|
-    = image_tag(image.content)
-    = link_to '削除', user_image_path(id: image.id), method: :delete
+  .edit-user.clearfix
+    .edit-user-left-content
+      .edit-user-left-content__list
+        %ul
+          %li
+            =link_to 'プロフィールを編集', edit_user_registration_path
+          %li
+            =link_to '写真', new_user_image_path
+          %li 信頼＆認証確認
+          %li レビュー
+          %li 紹介文
+      .edit-user-left-content__button
+        = link_to 'プロフィールを見る', user_path(id: current_user.id)
+    .edit-user-right-content
+      .edit-user-right-content__title
+        プロフィール写真
+      .edit-user-right-content__main.clearfix
+        .edit-user-right-content__main-field-left
+          - current_user.user_images.each do |image|
+            %span.current-image
+              = image_tag(image.content, class: "image-preview")
+              = link_to '削除', user_image_path(id: image.id), method: :delete, class: 'image-delete'
+        .edit-user-right-content__main-field-right
+          .image-text
+            正面から撮った鮮明な顔写真は、ホストとゲストが互いを知るうえでとても重要です。風景写真の人をなんの抵抗もなく受け入れられる人は少数派です! 写真は顔がはっきりわかるものを選び、個人情報や、先方のホストやゲストに伏せておきたい情報が写っていないことを確かめましょう。
+          .image-field
+            = form_for(@image) do |f|
+              = f.file_field :content
+              = f.submit "登録"
