@@ -18,7 +18,7 @@
         .edit-user-right-content__main
           .edit-user-right-content__main-field.clearfix
             .edit-user-right-content__main-field-left
-              = f.label :firstname, class: 'label'
+              = f.label :firstname, class: 'label', autofocus: true
             .edit-user-right-content__main-field-right
               = f.text_field :firstname, class: 'form'
           .edit-user-right-content__main-field.clearfix
@@ -43,7 +43,7 @@
             .edit-user-right-content__main-field-left
               = f.label :email, class: 'label'
             .edit-user-right-content__main-field-right
-              = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form'
+              = f.email_field :email, autocomplete: "email", class: 'form'
           .edit-user-right-content__main-field.clearfix
             .edit-user-right-content__main-field-left
               = f.label :phone, class: 'label'
@@ -83,7 +83,7 @@
             .edit-user-right-content__main-field-left
               = f.label :current_password, class: 'label'
             .edit-user-right-content__main-field-right
-              = f.password_field :current_password, class: 'form'
+              = f.password_field :current_password, autocomplete: "off", class: 'form'
               %span.message 確認のためにパスワードを入力してください。
         = f.submit "保存する", class: 'edit-user-right-content__submit'
         = link_to 'アカウント削除', registration_path(resource_name), method: :delete
