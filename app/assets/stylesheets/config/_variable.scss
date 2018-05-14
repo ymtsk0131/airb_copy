@@ -51,12 +51,24 @@ body {
   margin: 80px 80px 32px;
 }
 
+.hidden {
+  display: none;
+  }
+
 .view-all {
   text-align: left;
   width: 100%;
   padding: 8px;
   font-size: 17px;
   color: $green;
+}
+
+.margin-bottom-8px {
+  margin-bottom: 8px;
+}
+
+.text-aline-left {
+  text-align: left !important;
 }
 
 %field {
