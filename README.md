@@ -34,7 +34,7 @@ Airbnbのコピーサイトの作成。
 |Column|Type|Option|
 |------|----|------|
 |content|string|null: false|
-|user|reference|foreign_key: true|
+|user|references|foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -63,10 +63,10 @@ Airbnbのコピーサイトの作成。
 |min_stay|integer||
 |max_stay|integer||
 |base_price|integer||
-|user|reference|foreign_key: true|
-|amenity|reference|foreign_key: true|
-|house_rule|reference|foreign_key: true|
-|notice|reference|foreign_key: true|
+|user|references|foreign_key: true|
+|amenity|references|foreign_key: true|
+|house_rule|references|foreign_key: true|
+|notice|references|foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -81,7 +81,7 @@ Airbnbのコピーサイトの作成。
 |Column|Type|Option|
 |------|----|------|
 |content|string|null: false|
-|room|reference|foreign_key: true|
+|room|references|foreign_key: true|
 
 ### Association
 - belongs_to :room
@@ -160,8 +160,8 @@ Airbnbのコピーサイトの作成。
 |------|----|------|
 |date|date|null: false|
 |guests|integer|null: false|
-|user|reference|foreign_key: true|
-|room|reference|foreign_key: true|
+|user|references|foreign_key: true|
+|room|references|foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -173,8 +173,8 @@ Airbnbのコピーサイトの作成。
 |------|----|------|
 |content|string|null: false|
 |image|string||
-|user|reference|foreign_key: true|
-|reservation|reference|foreign_key: true|
+|user|references|foreign_key: true|
+|reservation|references|foreign_key: true|
 
 ### Association
 
@@ -192,8 +192,8 @@ Airbnbのコピーサイトの作成。
 |rate_cleanliness|integer|null: false|
 |rate_value|integer|null: false|
 |content|text|null: false|
-|user|reference|foreign_key: true|
-|room|reference|foreign_key: true|
+|user|references|foreign_key: true|
+|room|references|foreign_key: true|
 
 ### Association
 - belongs_to :user
