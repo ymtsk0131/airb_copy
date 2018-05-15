@@ -1,6 +1,9 @@
 .main.clearfix
   .left-content
-    =image_tag('profile.jpg', class: 'profile-img')
+    - if @user.user_images.present?
+      = image_tag(@user.user_images.last.content, class: 'profile-img')
+    - else
+      = image_tag('noimageuser.jpg', class: 'profile-img')
     .left-content__header
       基本情報
     .left-content__body
@@ -15,7 +18,7 @@
     .left-content__listing
       %h2 リスティング(1)
       .left-content__listing-list
-        =image_tag('sample6.jpg', class: 'listing-img')
+        = image_tag('sample6.jpg', class: 'listing-img')
         %span.list-detail
           The EDO CASTLE
           %br
@@ -35,17 +38,17 @@
         月
         からメンバー
       %span.report
-        =fa_icon 'flag'
+        = fa_icon 'flag'
         このメンバーを報告
       %p
-        =@user.introduction
+        = @user.introduction
     .right-content__reviews
       %h2 レビュー
       %h4 ゲストからのレビュー
       .right-content__reviews-review.clearfix
         .right-content__reviews-review-left
           %span.review-user
-            =image_tag('nobunaga.jpg', class: 'review-user-img')
+            = image_tag('nobunaga.jpg', class: 'review-user-img')
             %span.review-user-name 織田信長
         .right-content__reviews-review-right
           %p
@@ -55,7 +58,7 @@
       .right-content__reviews-review.clearfix
         .right-content__reviews-review-left
           %span.review-user
-            =image_tag('nobunaga.jpg', class: 'review-user-img')
+            = image_tag('nobunaga.jpg', class: 'review-user-img')
             %span.review-user-name 織田信長
         .right-content__reviews-review-right
           %p
