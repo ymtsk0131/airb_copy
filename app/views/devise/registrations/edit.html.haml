@@ -1,16 +1,7 @@
 .main
   .edit-user.clearfix
     .edit-user-left-content
-      .edit-user-left-content__list
-        %ul
-          %li プロフィールを編集
-          %li
-            =link_to '写真', new_user_image_path
-          %li 信頼＆認証確認
-          %li レビュー
-          %li 紹介文
-      .edit-user-left-content__button
-        = link_to 'プロフィールを見る', user_path(id: current_user.id)
+      = render 'layouts/edit-user-menu'
     .edit-user-right-content
       .edit-user-right-content__title
         必須項目

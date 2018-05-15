@@ -1,27 +1,17 @@
 .main
   .edit-user.clearfix
     .edit-user-left-content
-      .edit-user-left-content__list
-        %ul
-          %li
-            =link_to 'プロフィールを編集', edit_user_registration_path
-          %li
-            =link_to '写真', new_user_image_path
-          %li 信頼＆認証確認
-          %li レビュー
-          %li 紹介文
-      .edit-user-left-content__button
-        = link_to 'プロフィールを見る', user_path(id: current_user.id)
+      = render 'layouts/edit-user-menu'
     .edit-user-right-content
       .edit-user-right-content__title
         プロフィール写真
       .edit-user-right-content__main.clearfix
         .edit-user-right-content__main-field-left
           .current-image
-            -if @images.present?
+            - if @images.present?
               = image_tag(@images.last.content, class: "image-preview")
               = link_to '削除', user_image_path(id: @images.last.id), method: :delete, class: 'image-delete'
-            -else
+            - else
               = image_tag('noimageuser.jpg', class: 'image-preview')
         .edit-user-right-content__main-field-right
           .image-text
