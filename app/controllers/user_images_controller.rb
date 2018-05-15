@@ -1,6 +1,7 @@
 class UserImagesController < ApplicationController
   def new
     @image = UserImage.new
+    @images = current_user.user_images
   end
 
   def create
