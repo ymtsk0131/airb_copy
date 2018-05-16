@@ -5,7 +5,8 @@ class UserImagesController < ApplicationController
   end
 
   def create
-    if UserImage.create(content: image_params[:content], user_id: current_user.id)
+    image = UserImage.new(image_params)
+    if image.save
       redirect_to new_user_image_url
     else
       render :new
@@ -23,6 +24,6 @@ class UserImagesController < ApplicationController
 
   private
   def image_params
-    params.require(:user_image).permit(:content)
+    params.require(:user_image).permit(:content, :user_id)
   end
 end
