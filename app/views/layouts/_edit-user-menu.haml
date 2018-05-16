@@ -1,0 +1,11 @@
+.edit-user-left-content__list
+  %ul
+    %li
+      = link_to 'プロフィールを編集', edit_user_registration_path(current_user)
+    %li
+      = link_to '写真', new_user_image_path
+    %li 信頼＆認証確認
+    %li レビュー
+    %li 紹介文
+.edit-user-left-content__button
+  = link_to 'プロフィールを見る', user_path(current_user)

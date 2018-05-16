@@ -46,6 +46,33 @@
             padding: 0 6px;
             line-height: 40px;
           }
+
+          .current-image {
+            width: calc(100% - 2px);
+            margin-right: 2px;
+            position: relative;
+
+            .image-preview {
+              width: 100%;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+            }
+
+            .image-delete {
+              background-color: $basic;
+              color: #FFF;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+            }
+          }
+
+          .current-image:before {
+            content:"";
+            display: block;
+            padding-top: 100%;
+          }
         }
 
         &-right {
@@ -67,6 +94,16 @@
           @extend %field;
           height: 40px;
         }
+      }
+
+      .image-text {
+        margin-bottom: 8px;
+        padding: 0 12px;
+      }
+
+      .image-field {
+        margin-bottom: 8px;
+        padding: 0 12px;
       }
     }
 
