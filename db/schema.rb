@@ -10,7 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180512154625) do
+ActiveRecord::Schema.define(version: 20180517032130) do
+
+  create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "category",                           null: false
+    t.integer  "property_type",                      null: false
+    t.integer  "room_type",                          null: false
+    t.boolean  "occupied",                           null: false
+    t.integer  "capacity",                           null: false
+    t.integer  "bedrooms",                           null: false
+    t.integer  "beds",                               null: false
+    t.integer  "bathrooms",                          null: false
+    t.boolean  "bathroom_private",                   null: false
+    t.string   "location",                           null: false
+    t.text     "summary",              limit: 65535, null: false
+    t.boolean  "family"
+    t.boolean  "group"
+    t.boolean  "pets"
+    t.text     "other",                limit: 65535
+    t.integer  "reservation_deadline"
+    t.integer  "check_in_from"
+    t.integer  "check_in_to"
+    t.integer  "min_stay"
+    t.integer  "max_stay"
+    t.integer  "base_price"
+    t.integer  "user_id"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.index ["user_id"], name: "index_rooms_on_user_id", using: :btree
+  end
 
   create_table "user_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content",    null: false
@@ -46,5 +74,6 @@ ActiveRecord::Schema.define(version: 20180512154625) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "rooms", "users"
   add_foreign_key "user_images", "users"
 end
