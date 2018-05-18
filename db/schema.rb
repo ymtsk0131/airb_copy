@@ -10,7 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180517032130) do
+ActiveRecord::Schema.define(version: 20180518121245) do
+
+  create_table "amenities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.boolean  "essentials"
+    t.boolean  "wifi"
+    t.boolean  "shampoo"
+    t.boolean  "closet"
+    t.boolean  "tv"
+    t.boolean  "heat"
+    t.boolean  "air_condditioner"
+    t.boolean  "breakfast"
+    t.boolean  "workspace"
+    t.boolean  "fireplace"
+    t.boolean  "iron"
+    t.boolean  "hair_dryer"
+    t.boolean  "animals"
+    t.boolean  "private_entrance"
+    t.boolean  "smoke_detector"
+    t.boolean  "carbon_monoxide_detector"
+    t.boolean  "first_aid_kit"
+    t.boolean  "safety_card"
+    t.boolean  "fire_extinguisher"
+    t.boolean  "bedroom_lock"
+    t.boolean  "private_livingroom"
+    t.boolean  "pool"
+    t.boolean  "kitchen"
+    t.boolean  "laundry_washer"
+    t.boolean  "laundry_dryer"
+    t.boolean  "parking"
+    t.boolean  "elevator"
+    t.boolean  "hot_tub"
+    t.boolean  "gym"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "category",                           null: false
