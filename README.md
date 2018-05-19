@@ -119,6 +119,7 @@ Airbnbのコピーサイトの作成。
 |elevator|boolean||
 |hot_tub|boolean||
 |gym|boolean||
+|room|references|foreign_key: true|
 
 
 ### Association
