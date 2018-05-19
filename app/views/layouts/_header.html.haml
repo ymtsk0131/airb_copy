@@ -19,7 +19,7 @@
   .header-menu
     - if user_signed_in?
       %ul.header-menu-lists
-        %li.header-menu-lists__list= link_to button_tag('お部屋お掲載', class: 'header-menu-lists__list-button'), '/#'
+        %li.header-menu-lists__list= link_to button_tag('お部屋お掲載', class: 'header-menu-lists__list-button'), new_room_path
         %li.header-menu-lists__list= link_to button_tag('ホスト', class: 'header-menu-lists__list-button'), '/#'
         %li.header-menu-lists__list= link_to button_tag('お気に入り', class: 'header-menu-lists__list-button'), '/#'
         %li.header-menu-lists__list= link_to button_tag('旅行', class: 'header-menu-lists__list-button'), '/#'
