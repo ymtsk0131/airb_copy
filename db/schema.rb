@@ -10,7 +10,73 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180512154625) do
+ActiveRecord::Schema.define(version: 20180519011634) do
+
+  create_table "amenities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.boolean  "essentials"
+    t.boolean  "wifi"
+    t.boolean  "shampoo"
+    t.boolean  "closet"
+    t.boolean  "tv"
+    t.boolean  "heat"
+    t.boolean  "air_condditioner"
+    t.boolean  "breakfast"
+    t.boolean  "workspace"
+    t.boolean  "fireplace"
+    t.boolean  "iron"
+    t.boolean  "hair_dryer"
+    t.boolean  "animals"
+    t.boolean  "private_entrance"
+    t.boolean  "smoke_detector"
+    t.boolean  "carbon_monoxide_detector"
+    t.boolean  "first_aid_kit"
+    t.boolean  "safety_card"
+    t.boolean  "fire_extinguisher"
+    t.boolean  "bedroom_lock"
+    t.boolean  "private_livingroom"
+    t.boolean  "pool"
+    t.boolean  "kitchen"
+    t.boolean  "laundry_washer"
+    t.boolean  "laundry_dryer"
+    t.boolean  "parking"
+    t.boolean  "elevator"
+    t.boolean  "hot_tub"
+    t.boolean  "gym"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "room_id_id"
+    t.integer  "room_id"
+    t.index ["room_id"], name: "index_amenities_on_room_id", using: :btree
+    t.index ["room_id_id"], name: "index_amenities_on_room_id_id", using: :btree
+  end
+
+  create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "category",                           null: false
+    t.integer  "property_type",                      null: false
+    t.integer  "room_type",                          null: false
+    t.boolean  "occupied",                           null: false
+    t.integer  "capacity",                           null: false
+    t.integer  "bedrooms",                           null: false
+    t.integer  "beds",                               null: false
+    t.integer  "bathrooms",                          null: false
+    t.boolean  "bathroom_private",                   null: false
+    t.string   "location",                           null: false
+    t.text     "summary",              limit: 65535, null: false
+    t.boolean  "family"
+    t.boolean  "group"
+    t.boolean  "pets"
+    t.text     "other",                limit: 65535
+    t.integer  "reservation_deadline"
+    t.integer  "check_in_from"
+    t.integer  "check_in_to"
+    t.integer  "min_stay"
+    t.integer  "max_stay"
+    t.integer  "base_price"
+    t.integer  "user_id"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.index ["user_id"], name: "index_rooms_on_user_id", using: :btree
+  end
 
   create_table "user_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content",    null: false
@@ -46,5 +112,7 @@ ActiveRecord::Schema.define(version: 20180512154625) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "amenities", "rooms"
+  add_foreign_key "rooms", "users"
   add_foreign_key "user_images", "users"
 end
