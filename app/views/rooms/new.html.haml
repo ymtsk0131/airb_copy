@@ -1,6 +1,6 @@
 .main
   .add-room.clearfix
-    = form_for @room do |f|
+    = form_for @room, url: confirm_rooms_path do |f|
       .add-room-left
         .add-room-left__form
           %h3 掲載するのはどんなお部屋ですか?
