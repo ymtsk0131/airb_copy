@@ -1,4 +1,6 @@
 class RoomsController < ApplicationController
+  before_action :authenticate_user!, except: %i(index)
+  before_action :set_new_room, only: %i(confirm create)
 
   def index
   end
@@ -8,9 +10,14 @@ class RoomsController < ApplicationController
     @room.build_amenity
   end
 
+  def confirm
+    render :new if @room.invalid?
+  end
+
   def create
-    @room = Room.new(room_params)
-    if @room.save
+    if params[:back]
+      render :new
+    elsif @room.save
       redirect_to root_path
     else
       render :new
@@ -18,6 +25,11 @@ class RoomsController < ApplicationController
   end
 
   private
+
+  def set_new_room
+    @room = Room.new(room_params)
+  end
+
   def room_params
     params.require(:room).permit(:category,
                                  :property_type,
