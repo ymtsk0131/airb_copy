@@ -102,6 +102,13 @@ body {
   cursor: pointer;
 }
 
+.btn-small-green {
+  @extend %btn-small;
+  background-color: $green;
+  border: none;
+  color: #FFF;
+}
+
 %panel-header {
   font-size: 16px;
   padding: 12px;
@@ -112,4 +119,10 @@ body {
 %panel-body {
   padding: 20px;
   border: $border;
+}
+
+.link-green {
+  color: $green;
+  border: none;
+  cursor: pointer;
 }
