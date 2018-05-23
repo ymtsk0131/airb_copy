@@ -81,6 +81,7 @@ Airbnbのコピーサイトの作成。
 |Column|Type|Option|
 |------|----|------|
 |content|string|null: false|
+|status|integer|null: false|
 |room|references|foreign_key: true|
 
 ### Association
