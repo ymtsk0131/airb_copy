@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180519011634) do
+ActiveRecord::Schema.define(version: 20180523143443) do
 
   create_table "amenities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.boolean  "essentials"
@@ -48,6 +48,15 @@ ActiveRecord::Schema.define(version: 20180519011634) do
     t.integer  "room_id"
     t.index ["room_id"], name: "index_amenities_on_room_id", using: :btree
     t.index ["room_id_id"], name: "index_amenities_on_room_id_id", using: :btree
+  end
+
+  create_table "room_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "content",    null: false
+    t.integer  "status",     null: false
+    t.integer  "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_room_images_on_room_id", using: :btree
   end
 
   create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -113,6 +122,7 @@ ActiveRecord::Schema.define(version: 20180519011634) do
   end
 
   add_foreign_key "amenities", "rooms"
+  add_foreign_key "room_images", "rooms"
   add_foreign_key "rooms", "users"
   add_foreign_key "user_images", "users"
 end
