@@ -1,4 +1,6 @@
 class UserImagesController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @image = UserImage.new
     @images = current_user.user_images
