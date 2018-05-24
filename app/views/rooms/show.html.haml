@@ -1,0 +1,52 @@
+.main
+  .room-confirm
+    - if session[:flag2] == "on"
+      %h3
+        最後のステップです！
+      %p
+        料金とカレンダーを設定しましょう。
+      .room-confirm__step
+        %p
+          ベッド数、バスルーム数、アメニティなど
+        = link_to '変更する', edit_room_path(id: params[:id], status: "step1"), class: 'link-green'
+      .room-confirm__step
+        %p
+          写真、概要、タイトル
+        = link_to '変更する', edit_room_path(id: params[:id], status: "step2"), class: 'link-green'
+      .room-confirm__step
+        %h4
+          STEP3
+        %h3
+          予約準備を整えてフィニッシュ！
+        %p
+          予約受付設定、カレンダー、料金
+    - else
+      %h3
+        だいぶはかどりましたね！
+        = current_user.firstname
+        さん
+      %p
+        さあ、今度はリスティング掲載用にお部屋の詳しい説明を書きましょう。
+      .room-confirm__step
+        %h4
+          STEP1
+        %h3
+          基本情報
+        %p
+          ベッド数、バスルーム数、アメニティなど
+        = link_to '変更する', edit_room_path(id: params[:id], status: "step1"), class: 'link-green'
+      .room-confirm__step
+        %h4
+          STEP2
+        %h3
+          次に特徴をPR
+        %p
+          写真、概要、タイトル
+        = link_to '続行する', edit_room_path(id: params[:id], status: "step2"), class: 'btn-small-green'
+      .room-confirm__step
+        %h4
+          STEP3
+        %h3
+          予約準備を整えてフィニッシュ！
+        %p
+          予約受付設定、カレンダー、料金
