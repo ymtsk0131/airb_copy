@@ -1,0 +1,22 @@
+.room-confirm {
+  width: 50%;
+  margin: 58px 93.5px 100px 100px;
+
+  h3 {
+    margin-bottom: 16px;
+  }
+
+  p {
+    margin-bottom: 12px;
+  }
+
+  &__step {
+    border-bottom: $border;
+    padding: 12px 0;
+    margin-bottom: 24px;
+
+    h4 {
+      color: $light;
+    }
+  }
+}
