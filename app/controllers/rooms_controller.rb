@@ -71,6 +71,7 @@ class RoomsController < ApplicationController
                                  :max_stay,
                                  :base_price,
                                  :status,
+                                 :title,
                                  amenity_attributes:[:essentials,
                                                      :wifi,
                                                      :shampoo,
