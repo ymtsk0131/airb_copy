@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_user!, except: %i(index)
+  before_action :authenticate_user!, except: %i(index show)
   before_action :set_new_room, only: %i(create)
   before_action :set_room, only: %i(show edit update)
 
@@ -25,11 +25,14 @@ class RoomsController < ApplicationController
   def edit
     @images = @room.room_images
     @images.build
+    @room.build_house_rule
     @status = params[:status]
   end
 
   def update
-    if params[:flag2]
+    if params[:flag3]
+      session[:flag3] = "on"
+    elsif params[:flag2]
       session[:flag2] = "on"
     end
     if @room.user_id == current_user.id
@@ -106,7 +109,25 @@ class RoomsController < ApplicationController
                                                          :content,
                                                          :status,
                                                          :room_id,
-                                                         :content_cache]
+                                                         :content_cache],
+                                 house_rule_attributes:[:id,
+                                                        :children,
+                                                        :infants,
+                                                        :pets,
+                                                        :smoking,
+                                                        :events,
+                                                        :other_rules,
+                                                        :must_climb_stairs,
+                                                        :potential_for_noise,
+                                                        :pets_live_on_property,
+                                                        :no_parking_on_property,
+                                                        :some_spaces_are_shared,
+                                                        :amenity_limitations,
+                                                        :surveillance_or_recording_devices_on_property,
+                                                        :weapons_on_property,
+                                                        :dangerous_animals_on_property,
+                                                        :other_notice,
+                                                        :room]
                                 ).merge(user_id: current_user.id)
   end
 end
