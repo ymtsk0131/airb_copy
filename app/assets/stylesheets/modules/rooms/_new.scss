@@ -51,6 +51,20 @@
             margin: 48px 0 18px;
           }
         }
+        .main-image-upload {
+          width: 100%;
+          img {
+            width: 90%;
+          }
+        }
+
+        .sub-image-upload {
+          width: 30%;
+          display: inline-block;
+          img {
+            width: 100%;
+          }
+        }
       }
     }
 
