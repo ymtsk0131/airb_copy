@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180527125512) do
+ActiveRecord::Schema.define(version: 20180527143934) do
 
   create_table "amenities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.boolean  "essentials"
@@ -48,6 +48,29 @@ ActiveRecord::Schema.define(version: 20180527125512) do
     t.integer  "room_id"
     t.index ["room_id"], name: "index_amenities_on_room_id", using: :btree
     t.index ["room_id_id"], name: "index_amenities_on_room_id_id", using: :btree
+  end
+
+  create_table "house_rules", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.boolean  "children"
+    t.boolean  "infants"
+    t.boolean  "pets"
+    t.boolean  "smoking"
+    t.boolean  "events"
+    t.text     "other_rules",                                   limit: 65535
+    t.boolean  "must_climb_stairs"
+    t.boolean  "potential_for_noise"
+    t.boolean  "pets_live_on_property"
+    t.boolean  "no_parking_on_property"
+    t.boolean  "some_spaces_are_shared"
+    t.boolean  "amenity_limitations"
+    t.boolean  "surveillance_or_recording_devices_on_property"
+    t.boolean  "weapons_on_property"
+    t.boolean  "dangerous_animals_on_property"
+    t.text     "other_notice",                                  limit: 65535
+    t.integer  "room_id"
+    t.datetime "created_at",                                                  null: false
+    t.datetime "updated_at",                                                  null: false
+    t.index ["room_id"], name: "index_house_rules_on_room_id", using: :btree
   end
 
   create_table "room_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -124,6 +147,7 @@ ActiveRecord::Schema.define(version: 20180527125512) do
   end
 
   add_foreign_key "amenities", "rooms"
+  add_foreign_key "house_rules", "rooms"
   add_foreign_key "room_images", "rooms"
   add_foreign_key "rooms", "users"
   add_foreign_key "user_images", "users"
