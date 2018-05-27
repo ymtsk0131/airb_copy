@@ -57,6 +57,7 @@ Airbnbのコピーサイトの作成。
 |group|boolean||
 |pets|boolean||
 |other|text||
+|title|string||
 |reservation_deadline|integer||
 |check_in_from|integer||
 |check_in_to|integer||
