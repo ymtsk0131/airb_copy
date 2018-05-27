@@ -1,52 +1,83 @@
 .main
-  .room-confirm
-    - if session[:flag2] == "on"
-      %h3
-        最後のステップです！
-      %p
-        料金とカレンダーを設定しましょう。
-      .room-confirm__step
-        %p
-          ベッド数、バスルーム数、アメニティなど
-        = link_to '変更する', edit_room_path(id: params[:id], status: "step1"), class: 'link-green'
-      .room-confirm__step
-        %p
-          写真、概要、タイトル
-        = link_to '変更する', edit_room_path(id: params[:id], status: "step2"), class: 'link-green'
-      .room-confirm__step
-        %h4
-          STEP3
+  - if @room.status == "公開"
+    部屋詳細ページです！
+    - if user_signed_in? && @room.user_id == current_user.id
+      = form_for @room do |f|
+        = f.hidden_field :status, value: "非公開"
+        = f.submit "編集する", class: 'link-green'
+  - elsif @room.status == "非公開" && @room.user_id == current_user.id
+    .room-confirm
+      - if session[:flag3] == "on"
         %h3
-          予約準備を整えてフィニッシュ！
+          さあ、リスティングを完了しましょう！
         %p
-          予約受付設定、カレンダー、料金
-    - else
-      %h3
-        だいぶはかどりましたね！
-        = current_user.firstname
-        さん
-      %p
-        さあ、今度はリスティング掲載用にお部屋の詳しい説明を書きましょう。
-      .room-confirm__step
-        %h4
-          STEP1
+          料金とカレンダーを設定しましょう。
+        .room-confirm__step
+          %p
+            ベッド数、バスルーム数、アメニティなど
+          = link_to '変更する', edit_room_path(id: params[:id], status: "step1"), class: 'link-green'
+        .room-confirm__step
+          %p
+            写真、概要、タイトル
+          = link_to '変更する', edit_room_path(id: params[:id], status: "step2"), class: 'link-green'
+        .room-confirm__step
+          %p
+            予約受付設定、カレンダー、料金
+          = link_to '変更する', edit_room_path(id: params[:id], status: "step3"), class: 'link-green'
+        .room-confirm__step
+          = form_for @room do |f|
+            = f.hidden_field :status, value: "公開"
+            = f.submit "公開する", class: 'btn-small-green'
+      - elsif session[:flag2] == "on"
         %h3
-          基本情報
+          最後のステップです！
         %p
-          ベッド数、バスルーム数、アメニティなど
-        = link_to '変更する', edit_room_path(id: params[:id], status: "step1"), class: 'link-green'
-      .room-confirm__step
-        %h4
-          STEP2
+          料金とカレンダーを設定しましょう。
+        .room-confirm__step
+          %p
+            ベッド数、バスルーム数、アメニティなど
+          = link_to '変更する', edit_room_path(id: params[:id], status: "step1"), class: 'link-green'
+        .room-confirm__step
+          %p
+            写真、概要、タイトル
+          = link_to '変更する', edit_room_path(id: params[:id], status: "step2"), class: 'link-green'
+        .room-confirm__step
+          %h4
+            STEP3
+          %h3
+            予約準備を整えてフィニッシュ！
+          %p
+            予約受付設定、カレンダー、料金
+          = link_to '続行する', edit_room_path(id: params[:id], status: "step3"), class: 'btn-small-green'
+      - else
         %h3
-          次に特徴をPR
+          だいぶはかどりましたね！
+          = current_user.firstname
+          さん
         %p
-          写真、概要、タイトル
-        = link_to '続行する', edit_room_path(id: params[:id], status: "step2"), class: 'btn-small-green'
-      .room-confirm__step
-        %h4
-          STEP3
-        %h3
-          予約準備を整えてフィニッシュ！
-        %p
-          予約受付設定、カレンダー、料金
+          さあ、今度はリスティング掲載用にお部屋の詳しい説明を書きましょう。
+        .room-confirm__step
+          %h4
+            STEP1
+          %h3
+            基本情報
+          %p
+            ベッド数、バスルーム数、アメニティなど
+          = link_to '変更する', edit_room_path(id: params[:id], status: "step1"), class: 'link-green'
+        .room-confirm__step
+          %h4
+            STEP2
+          %h3
+            次に特徴をPR
+          %p
+            写真、概要、タイトル
+          = link_to '続行する', edit_room_path(id: params[:id], status: "step2"), class: 'btn-small-green'
+        .room-confirm__step
+          %h4
+            STEP3
+          %h3
+            予約準備を整えてフィニッシュ！
+          %p
+            予約受付設定、カレンダー、料金
+  - else
+    エラー
