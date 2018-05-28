@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180527143934) do
+ActiveRecord::Schema.define(version: 20180528144417) do
 
   create_table "amenities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.boolean  "essentials"
@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 20180527143934) do
   end
 
   create_table "room_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "content",    null: false
-    t.integer  "status",     null: false
+    t.string   "content"
+    t.integer  "status"
     t.integer  "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_user!, except: %i(index show)
+  before_action :authenticate_user!, except: %i(index)
   before_action :set_new_room, only: %i(create)
   before_action :set_room, only: %i(show edit update)
 
@@ -9,35 +9,15 @@ class RoomsController < ApplicationController
   def new
     @room = Room.new
     @room.build_amenity
-  end
-
-  def show
+    @room.room_images.build
+    @room.build_house_rule
   end
 
   def create
     if @room.save
-      redirect_to @room
+      redirect_to root_path
     else
       render :new
-    end
-  end
-
-  def edit
-    @images = @room.room_images
-    @images.build
-    @room.build_house_rule
-    @status = params[:status]
-  end
-
-  def update
-    if params[:flag3]
-      session[:flag3] = "on"
-    elsif params[:flag2]
-      session[:flag2] = "on"
-    end
-    if @room.user_id == current_user.id
-      @room.update(room_params)
-      redirect_to @room
     end
   end
 
@@ -45,6 +25,9 @@ class RoomsController < ApplicationController
 
   def set_new_room
     @room = Room.new(room_params)
+    @room.build_amenity
+    @room.room_images.build
+    @room.build_house_rule
   end
 
   def set_room
@@ -127,7 +110,7 @@ class RoomsController < ApplicationController
                                                         :weapons_on_property,
                                                         :dangerous_animals_on_property,
                                                         :other_notice,
-                                                        :room]
+                                                        :room_id]
                                 ).merge(user_id: current_user.id)
   end
 end
