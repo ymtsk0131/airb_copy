@@ -2,8 +2,8 @@ class Room < ApplicationRecord
   belongs_to :user
   has_one :amenity, dependent: :destroy
   has_one :house_rule, dependent: :destroy
-  has_many :reservations, dependent: :destroy
-  has_many :reviews, dependent: :destroy
+  # has_many :reservations, dependent: :destroy
+  # has_many :reviews, dependent: :destroy
   has_many :room_images, dependent: :destroy
   accepts_nested_attributes_for :amenity
   accepts_nested_attributes_for :room_images, reject_if: :reject_room_images
