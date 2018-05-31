@@ -1,33 +1,15 @@
-.rooms
-  %h3 世界のお家
-  .rooms__room
-    = image_tag('sample6.jpg')
+.rooms__room
+  = link_to room_path(room) do
+    - if room.room_images.present?
+      = image_tag(room.room_images.where(status: 'main')[0].content)
+    - else
+      = image_tag('noimageroom.png')
     .rooms__room-info
-      %span.room-category 一軒家貸切 · 東京
-      %span.room-name The EDO CASTLE
-      %span.room-price ¥ 65,000/泊 · キャンセル無料
+      %span.room-category
+        = room.category
+      %span.room-name
+        = room.title
+      %span.room-price
+        = room.base_price
+        円/泊 · キャンセル無料
       %span.rate.rate5
-  .rooms__room
-    = image_tag('sample6.jpg')
-    .rooms__room-info
-      %span.room-category 一軒家貸切 · 東京
-      %span.room-name The EDO CASTLE
-      %span.room-price ¥ 65,000/泊 · キャンセル無料
-      %span.rate.rate5
-  .rooms__room
-    = image_tag('sample6.jpg')
-    .rooms__room-info
-      %span.room-category 一軒家貸切 · 東京
-      %span.room-name The EDO CASTLE
-      %span.room-price ¥ 65,000/泊 · キャンセル無料
-      %span.rate.rate5
-  .rooms__room
-    = image_tag('sample6.jpg')
-    .rooms__room-info
-      %span.room-category 一軒家貸切 · 東京
-      %span.room-name The EDO CASTLE
-      %span.room-price ¥ 65,000/泊 · キャンセル無料
-      %span.rate.rate5
-  .view-all
-    全てを見る（2000+）
-    =fa_icon 'angle-right'
