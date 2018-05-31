@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!, except: %i(index)
-  before_action :set_new_room, only: %i(confirm create)
+  before_action :set_new_room, only: %i(create)
+  before_action :set_room, only: %i(show destroy)
 
   def index
   end
@@ -8,19 +9,27 @@ class RoomsController < ApplicationController
   def new
     @room = Room.new
     @room.build_amenity
-  end
-
-  def confirm
-    render :new if @room.invalid?
+    @room.room_images.build
+    @room.build_house_rule
   end
 
   def create
-    if params[:back]
-      render :new
-    elsif @room.save
+    if @room.save
       redirect_to root_path
     else
       render :new
+    end
+  end
+
+  def show
+  end
+
+  def destroy
+    if current_user.id == @room.user_id
+      @room.destroy
+      redirect_to root_path
+    else
+      render :show
     end
   end
 
@@ -28,6 +37,13 @@ class RoomsController < ApplicationController
 
   def set_new_room
     @room = Room.new(room_params)
+    @room.build_amenity
+    @room.room_images.build
+    @room.build_house_rule
+  end
+
+  def set_room
+    @room = Room.find(params[:id])
   end
 
   def room_params
@@ -52,6 +68,8 @@ class RoomsController < ApplicationController
                                  :min_stay,
                                  :max_stay,
                                  :base_price,
+                                 :status,
+                                 :title,
                                  amenity_attributes:[:essentials,
                                                      :wifi,
                                                      :shampoo,
@@ -81,7 +99,30 @@ class RoomsController < ApplicationController
                                                      :elevator,
                                                      :hot_tub,
                                                      :gym,
-                                                     :room_id]
+                                                     :room_id],
+                                 room_images_attributes:[:id,
+                                                         :content,
+                                                         :status,
+                                                         :room_id,
+                                                         :content_cache],
+                                 house_rule_attributes:[:id,
+                                                        :children,
+                                                        :infants,
+                                                        :pets,
+                                                        :smoking,
+                                                        :events,
+                                                        :other_rules,
+                                                        :must_climb_stairs,
+                                                        :potential_for_noise,
+                                                        :pets_live_on_property,
+                                                        :no_parking_on_property,
+                                                        :some_spaces_are_shared,
+                                                        :amenity_limitations,
+                                                        :surveillance_or_recording_devices_on_property,
+                                                        :weapons_on_property,
+                                                        :dangerous_animals_on_property,
+                                                        :other_notice,
+                                                        :room_id]
                                 ).merge(user_id: current_user.id)
   end
 end

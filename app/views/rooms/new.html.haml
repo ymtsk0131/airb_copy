@@ -1,8 +1,8 @@
 .main
   .add-room.clearfix
-    = form_for @room, url: confirm_rooms_path do |f|
-      .add-room-left
-        .add-room-left__form
+    .add-room-left
+      .add-room-left__form
+        = form_for @room do |f|
           %h3 掲載するのはどんなお部屋ですか?
           %span.item
             = f.label :category
@@ -139,15 +139,93 @@
               %label.select-button
                 = a.check_box :gym, {}, true, false
                 = a.label :gym
-          %h3 概要
           %span.item
+            %h3 お部屋の様子を写真で旅行者に紹介しよう
+            .main-image-upload
+              = image_tag('noimageroom.png')
+              = f.fields_for :room_images do |image|
+                = image.file_field :content
+                = image.hidden_field :status, value: "main"
+          %span.item
+            %h4 サブ画像
+            - 3.times do |i|
+              .sub-image-upload
+                = image_tag('noimageroom.png')
+                = f.fields_for :room_images do |image|
+                  = image.file_field :content
+                  = image.hidden_field :status, value: "sub"
+          %h3 説明文を編集する
+          %span.item
+            %h4 概要
             = f.text_area :summary
-        .add-room-left__submit
-          = f.submit '次へ', class: 'submit'
-      .add-room-right
-        .add-room-right__notice
-          = fa_icon 'lightbulb', class: 'icon'
-          %h4 Notice
-          %p 説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル
-          %h4 Notice2
-          %p 説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル
+          %h4 こんな人にぴったりの宿です
+          %label.select-button
+            = f.check_box :family, {}, true, false
+            = f.label :family
+          %label.select-button
+            = f.check_box :group, {}, true, false
+            = f.label :group
+          %label.select-button
+            = f.check_box :pets, {}, true, false
+            = f.label :pets
+          %h3 物件に名前をつける
+          %span.item
+            = f.text_field :title, class: 'text_field'
+            = f.fields_for :house_rule do |h|
+              %h3 滞在中のハウスルールを設定しましょう
+              %label.select-button
+                = h.check_box :children, {}, true, false
+                = h.label :children
+              %label.select-button
+                = h.check_box :infants, {}, true, false
+                = h.label :infants
+              %label.select-button
+                = h.check_box :pets, {}, true, false
+                = h.label :pets
+              %label.select-button
+                = h.check_box :smoking, {}, true, false
+                = h.label :smoking
+              %label.select-button
+                = h.check_box :events, {}, true, false
+                = h.label :events
+              %h4 追加ルール
+              = h.text_area :other_rules
+              %h4 お家についてゲストが事前に知っておくべきこと
+              %label.select-button
+                = h.check_box :must_climb_stairs, {}, true, false
+                = h.label :must_climb_stairs
+              %label.select-button
+                = h.check_box :potential_for_noise, {}, true, false
+                = h.label :potential_for_noise
+              %label.select-button
+                = h.check_box :pets_live_on_property, {}, true, false
+                = h.label :pets_live_on_property
+              %label.select-button
+                = h.check_box :no_parking_on_property, {}, true, false
+                = h.label :no_parking_on_property
+              %label.select-button
+                = h.check_box :some_spaces_are_shared, {}, true, false
+                = h.label :some_spaces_are_shared
+              %label.select-button
+                = h.check_box :amenity_limitations, {}, true, false
+                = h.label :amenity_limitations
+              %label.select-button
+                = h.check_box :surveillance_or_recording_devices_on_property, {}, true, false
+                = h.label :surveillance_or_recording_devices_on_property
+              %label.select-button
+                = h.check_box :weapons_on_property, {}, true, false
+                = h.label :weapons_on_property
+              %label.select-button
+                = h.check_box :dangerous_animals_on_property, {}, true, false
+                = h.label :dangerous_animals_on_property
+              %h4 その他の注意事項
+              = h.text_area :other_notice
+          .add-room-left__submit
+            = f.submit '完了', class: 'btn-small-green'
+    .add-room-right
+      .add-room-right__notice
+        = fa_icon 'lightbulb', class: 'icon'
+        %h4 Notice
+        %p 説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル
+        %h4 Notice2
+        %p 説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル説明文サンプル
