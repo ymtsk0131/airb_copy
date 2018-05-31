@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!, except: %i(index)
   before_action :set_new_room, only: %i(create)
-  before_action :set_room, only: %i(show edit update)
+  before_action :set_room, only: %i(show destroy)
 
   def index
   end
@@ -18,6 +18,18 @@ class RoomsController < ApplicationController
       redirect_to root_path
     else
       render :new
+    end
+  end
+
+  def show
+  end
+
+  def destroy
+    if current_user.id == @room.user_id
+      @room.destroy
+      redirect_to root_path
+    else
+      render :show
     end
   end
 
