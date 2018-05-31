@@ -4,7 +4,7 @@ class RoomsController < ApplicationController
   before_action :set_room, only: %i(show destroy)
 
   def index
-    @rooms = Room.order('created_at DESC').limit(8)
+    @rooms = Room.order('created_at DESC').page(params[:page]).per(8)
   end
 
   def new
