@@ -1,6 +1,12 @@
 .main
   = render 'layouts/search'
-  = render 'layouts/feature-special'
-  = render 'layouts/rooms'
+  / = render 'layouts/feature-special'
+  .rooms
+    %h3 世界のお家
+    - @rooms.each do |room|
+      = render partial: "layouts/rooms", locals: {room: room}
+    .view-all
+      全てを見る（2000+）
+      =fa_icon 'angle-right'
   = render 'layouts/feature-collection'
   = render 'layouts/feature-category'
