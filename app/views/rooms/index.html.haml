@@ -6,7 +6,6 @@
     - @rooms.each do |room|
       = render partial: "layouts/rooms", locals: {room: room}
     .view-all
-      全てを見る（2000+）
-      =fa_icon 'angle-right'
+      = paginate @rooms
   = render 'layouts/feature-collection'
   = render 'layouts/feature-category'
