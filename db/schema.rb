@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180519011634) do
+ActiveRecord::Schema.define(version: 20180528144417) do
 
   create_table "amenities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.boolean  "essentials"
@@ -50,6 +50,38 @@ ActiveRecord::Schema.define(version: 20180519011634) do
     t.index ["room_id_id"], name: "index_amenities_on_room_id_id", using: :btree
   end
 
+  create_table "house_rules", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.boolean  "children"
+    t.boolean  "infants"
+    t.boolean  "pets"
+    t.boolean  "smoking"
+    t.boolean  "events"
+    t.text     "other_rules",                                   limit: 65535
+    t.boolean  "must_climb_stairs"
+    t.boolean  "potential_for_noise"
+    t.boolean  "pets_live_on_property"
+    t.boolean  "no_parking_on_property"
+    t.boolean  "some_spaces_are_shared"
+    t.boolean  "amenity_limitations"
+    t.boolean  "surveillance_or_recording_devices_on_property"
+    t.boolean  "weapons_on_property"
+    t.boolean  "dangerous_animals_on_property"
+    t.text     "other_notice",                                  limit: 65535
+    t.integer  "room_id"
+    t.datetime "created_at",                                                  null: false
+    t.datetime "updated_at",                                                  null: false
+    t.index ["room_id"], name: "index_house_rules_on_room_id", using: :btree
+  end
+
+  create_table "room_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "content"
+    t.integer  "status"
+    t.integer  "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_room_images_on_room_id", using: :btree
+  end
+
   create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "category",                           null: false
     t.integer  "property_type",                      null: false
@@ -75,6 +107,8 @@ ActiveRecord::Schema.define(version: 20180519011634) do
     t.integer  "user_id"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
+    t.integer  "status"
+    t.string   "title"
     t.index ["user_id"], name: "index_rooms_on_user_id", using: :btree
   end
 
@@ -113,6 +147,8 @@ ActiveRecord::Schema.define(version: 20180519011634) do
   end
 
   add_foreign_key "amenities", "rooms"
+  add_foreign_key "house_rules", "rooms"
+  add_foreign_key "room_images", "rooms"
   add_foreign_key "rooms", "users"
   add_foreign_key "user_images", "users"
 end

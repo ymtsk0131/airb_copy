@@ -57,6 +57,7 @@ Airbnbのコピーサイトの作成。
 |group|boolean||
 |pets|boolean||
 |other|text||
+|title|string||
 |reservation_deadline|integer||
 |check_in_from|integer||
 |check_in_to|integer||
@@ -66,13 +67,11 @@ Airbnbのコピーサイトの作成。
 |user|references|foreign_key: true|
 |amenity|references|foreign_key: true|
 |house_rule|references|foreign_key: true|
-|notice|references|foreign_key: true|
 
 ### Association
 - belongs_to :user
 - has_one :amenity, dependent: :destroy
 - has_one :house_rule, dependent: :destroy
-- has_one :notice, dependent: :destroy
 - has_many :reservations, dependent: :destroy
 - has_many :reviews, dependent: :destroy
 - has_many :room_images, dependent: :destroy
@@ -81,6 +80,7 @@ Airbnbのコピーサイトの作成。
 |Column|Type|Option|
 |------|----|------|
 |content|string|null: false|
+|status|integer|null: false|
 |room|references|foreign_key: true|
 
 ### Association
@@ -128,20 +128,12 @@ Airbnbのコピーサイトの作成。
 ## house_rulesテーブル
 |Column|Type|Option|
 |------|----|------|
-|name|strings||
 |children|boolean||
 |infants|boolean||
 |pets|boolean||
 |smoking|boolean||
 |events|boolean||
 |other_rules|text||
-
-### Association
-- belongs_to :room
-
-## noticesテーブル
-|Column|Type|Option|
-|------|----|------|
 |must_climb_stairs|boolean||
 |potential_for_noise|boolean||
 |pets_live_on_property|boolean||
@@ -152,6 +144,7 @@ Airbnbのコピーサイトの作成。
 |weapons_on_property|boolean||
 |dangerous_animals_on_property|boolean||
 |other_notice|text||
+|room|references|foreign_key: true|
 
 ### Association
 - belongs_to :room
