@@ -1,15 +1,18 @@
-.rooms__room
-  = link_to room_path(room) do
-    - if room.room_images.present?
-      = image_tag(room.room_images.where(status: 'main')[0].content)
-    - else
-      = image_tag('noimageroom.png')
-    .rooms__room-info
-      %span.room-category
-        = room.category
-      %span.room-name
-        = room.title
-      %span.room-price
-        = room.base_price
-        円/泊 · キャンセル無料
-      %span.rate.rate5
+- @rooms.each do |room|
+  .rooms__room
+    = link_to room_path(room) do
+      - if room.room_images.present?
+        = image_tag(room.room_images.where(status: 'main')[0].content)
+      - else
+        = image_tag('noimageroom.png')
+      .rooms__room-info
+        %span.room-category
+          = room.category
+        %span.room-name
+          = room.title
+        %span.room-price
+          = room.base_price
+          円/泊 · キャンセル無料
+        %span.rate.rate5
+.view-all
+  = paginate @rooms, remote: true

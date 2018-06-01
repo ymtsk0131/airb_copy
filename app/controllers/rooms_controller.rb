@@ -5,6 +5,10 @@ class RoomsController < ApplicationController
 
   def index
     @rooms = Room.order('created_at DESC').page(params[:page]).per(8)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
