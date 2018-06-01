@@ -3,9 +3,7 @@
   / = render 'layouts/feature-special'
   .rooms
     %h3 世界のお家
-    - @rooms.each do |room|
-      = render partial: "layouts/rooms", locals: {room: room}
-    .view-all
-      = paginate @rooms
+    #rooms
+      = render partial: "layouts/rooms"
   = render 'layouts/feature-collection'
   = render 'layouts/feature-category'
