@@ -6,11 +6,23 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = @room.reservations.new(reservation_params)
-    if @reservation.save
-      redirect_to root_path
-    else
+    reservated_days = @room.reservations
+    reservation = Reservation.new(reservation_params)
+    duplicate = false
+    reservated_days.each do |reservated_day|
+      if reservated_day.check_in_date <= reservation.check_out_date && reservated_day.check_out_date >= reservation.check_in_date
+        duplicate = true
+        break
+      end
+    end
+    if duplicate == true
       render :new
+    else
+      if reservation.save
+        redirect_to root_path
+      else
+        render :new
+      end
     end
   end
 
@@ -20,6 +32,9 @@ class ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:date, :guests, :room_id).merge(user_id: current_user.id)
+    params.require(:reservation).permit(:check_in_date,
+                                        :check_out_date,
+                                        :guests)
+                                .merge(user_id: current_user.id, room_id: params[:room_id])
   end
 end
