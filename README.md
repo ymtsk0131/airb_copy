@@ -25,7 +25,7 @@ Airbnbのコピーサイトの作成。
 
 ### Association
 - has_many :rooms, dependent: :destroy
-- has_many :reservations, dependent: :destroy
+- has_many :reservations
 - has_many :reviews, dependent: :destroy
 - has_many :user_images, dependent: :destroy
 - has_many :messages, dependent: :destroy
@@ -152,7 +152,8 @@ Airbnbのコピーサイトの作成。
 ## reservationsテーブル
 |Column|Type|Option|
 |------|----|------|
-|date|date|null: false|
+|check_in_date|date|null: false|
+|check_out_date|date|null: false|
 |guests|integer|null: false|
 |user|references|foreign_key: true|
 |room|references|foreign_key: true|
