@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180528144417) do
+ActiveRecord::Schema.define(version: 20180602091459) do
 
   create_table "amenities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.boolean  "essentials"
@@ -73,6 +73,18 @@ ActiveRecord::Schema.define(version: 20180528144417) do
     t.index ["room_id"], name: "index_house_rules_on_room_id", using: :btree
   end
 
+  create_table "reservations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.date     "check_in_date",  null: false
+    t.integer  "guests",         null: false
+    t.integer  "user_id"
+    t.integer  "room_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.date     "check_out_date"
+    t.index ["room_id"], name: "index_reservations_on_room_id", using: :btree
+    t.index ["user_id"], name: "index_reservations_on_user_id", using: :btree
+  end
+
   create_table "room_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content"
     t.integer  "status"
@@ -93,7 +105,7 @@ ActiveRecord::Schema.define(version: 20180528144417) do
     t.integer  "bathrooms",                          null: false
     t.boolean  "bathroom_private",                   null: false
     t.string   "location",                           null: false
-    t.text     "summary",              limit: 65535, null: false
+    t.text     "summary",              limit: 65535
     t.boolean  "family"
     t.boolean  "group"
     t.boolean  "pets"
@@ -148,6 +160,8 @@ ActiveRecord::Schema.define(version: 20180528144417) do
 
   add_foreign_key "amenities", "rooms"
   add_foreign_key "house_rules", "rooms"
+  add_foreign_key "reservations", "rooms"
+  add_foreign_key "reservations", "users"
   add_foreign_key "room_images", "rooms"
   add_foreign_key "rooms", "users"
   add_foreign_key "user_images", "users"
