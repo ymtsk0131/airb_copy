@@ -1,0 +1,8 @@
+.main
+  予約する
+  = form_for [@room, @room.reservations.new] do |f|
+    = f.label :date
+    = f.date_field :date
+    = f.label :guests
+    = f.number_field :guests
+    = f.submit '登録する'
