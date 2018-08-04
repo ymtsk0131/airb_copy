@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_user!, except: %i(index)
+  before_action :authenticate_user!, except: %i(index show)
   before_action :set_new_room, only: %i(create)
   before_action :set_room, only: %i(show destroy)
 

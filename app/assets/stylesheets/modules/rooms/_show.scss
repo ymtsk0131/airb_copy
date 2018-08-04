@@ -1,0 +1,103 @@
+@mixin left-content-base {
+  border-bottom: $border;
+  padding: 8px 0;
+}
+
+.room {
+  &_-cover {
+    .header-image {
+      width: 100%;
+    }
+  }
+
+  &-left-content {
+    float: left;
+    width: calc(60% - 20px);
+    padding: 10px;
+
+    &__basic-infomation {
+      vertical-align: middle;
+
+      &-title {
+        width: 90%;
+        display: inline-block;
+      }
+
+      &-user {
+        width: 10%;
+        float: right;
+        display: inline-block;
+        text-align: center;
+
+        .user-image {
+          width: 100%;
+          border-radius: 50% !important;
+        }
+
+        .user-name {
+          display: block;
+        }
+      }
+    }
+
+    &__summary {
+      @include left-content-base;
+    }
+
+    &__amenity {
+      @include left-content-base;
+      .item {
+        display: inline-block;
+        padding: 8px 0;
+        width: 45%;
+      }
+    }
+    &__house-rule {
+      @include left-content-base;
+      .item {
+        display: block;
+        padding: 8px 0;
+      }
+    }
+
+    &__bed {
+      @include left-content-base;
+      .item {
+        display: inline-block;
+        padding: 8px 0;
+        border: $border;
+        width: 33%;
+      }
+    }
+
+    &__calender {
+      @include left-content-base;
+      .item {
+        display: block;
+        padding: 8px 0;
+        width: 50%;
+        text-align: center;
+        h5 {
+          font-weight: bold;
+        }
+        table {
+          width: 100%;
+          tr {
+            td {
+              background-color: $lightgreen;
+              text-align: center;
+              padding: 5px;
+              border: 2px solid #FFF;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-right-content {
+    float: right;
+    width: calc(40% -20px);
+    padding: 10px;
+  }
+}
