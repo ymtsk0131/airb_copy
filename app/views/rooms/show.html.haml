@@ -166,8 +166,26 @@
         %span.item
           10:00までにチェックアウト
     .room-right-content
-      - if user_signed_in? && @room.user_id == current_user.id
-        = link_to '削除する', room_path(@room), method: 'delete', class: 'btn-small-red'
-      - else
-        = link_to '予約する', new_room_reservation_path(@room), class: 'btn-small-green'
+      / - if user_signed_in? && @room.user_id == current_user.id
+      /   = link_to '削除する', room_path(@room), method: 'delete', class: 'btn-small-red'
+      / - else
+      /   = link_to '予約する', new_room_reservation_path(@room), class: 'btn-small-green'
+      .room-right-content__reservation
+        .room-info
+          .price
+            %span.price-num ¥10000
+            %span.price-day /1泊
+          .rate.rate5
+        = form_for [@room, @room.reservations.new] do |f|
+          .label
+            日付
+          .field
+            = f.date_field :check_in_date, class: 'date'
+            = f.date_field :check_out_date, class: 'date'
+          .label
+            人数
+          .field
+            = f.number_field :guests, min: 1, max: @room.capacity, class: 'guests'
+          .field
+            = f.submit '予約をリクエスト', class: 'btn-large-red'
     .clear

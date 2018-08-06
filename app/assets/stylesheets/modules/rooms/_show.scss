@@ -12,8 +12,8 @@
 
   &-left-content {
     float: left;
-    width: calc(60% - 20px);
-    padding: 10px;
+    width: calc(60% - 32px);
+    padding: 16px;
 
     &__basic-infomation {
       vertical-align: middle;
@@ -97,7 +97,48 @@
 
   &-right-content {
     float: right;
-    width: calc(40% -20px);
-    padding: 10px;
+    width: calc(40% - 32px);
+    padding: 16px;
+
+    &__reservation {
+      border: $border;
+      padding: 0 16px;
+
+      .room-info {
+        padding: 16px 0;
+        border-bottom: $border;
+      }
+
+      .price-num {
+        font-size: 18px;
+      }
+
+      .price-day {
+        font-size: 12px;
+      }
+
+      .new_reservation {
+        padding: 16px 0;
+      }
+
+      .label {
+
+      }
+
+      .field {
+
+        margin-bottom: 16px;
+
+        .date {
+          width: 40%;
+          padding: 8px;
+        }
+
+        .guests {
+          width: 80%;
+          padding: 8px;
+        }
+      }
+    }
   }
 }
