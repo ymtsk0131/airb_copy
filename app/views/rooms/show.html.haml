@@ -1,4 +1,191 @@
 .main
-  = @room.id
-  の部屋詳細です
-  = link_to '削除する', room_path(@room), method: 'delete', class: 'link-green'
+  .room
+    .room-cover
+      = image_tag('sample4.jpg', class: "header-image")
+    .room-left-content
+      .room-left-content__basic-infomation
+        .room-left-content__basic-infomation-title
+          %p
+            =@room.category
+          %h3
+            = @room.title
+          %p
+            = @room.location
+        .room-left-content__basic-infomation-user
+          = image_tag(@room.user.user_images[0].content, class: "user-image")
+          %span.user-name
+            = @room.user.firstname
+      .room-left-content__conditions
+        ゲスト
+        = @room.capacity
+        人
+        = @room.bedrooms
+        寝室
+        ベッド
+        = @room.beds
+        台
+        = @room.bathrooms
+        バスルーム
+      .room-left-content__summary
+        %p
+          = simple_format(@room.summary)
+      .room-left-content__amenity
+        %h4
+          アメニティ・設備
+        %span.item
+          エッセンシャル
+        %span.item
+          Wifi
+        %span.item
+          シャンプー
+        %span.item
+          クローゼット
+        %span.item
+          TV
+        %span.item
+          暖房器具
+        %span.item
+          エアコン
+      .room-left-content__bed
+        %h4
+          ベッドタイプ
+        %span.item
+          寝室１
+          クイーンベッド１
+        %span.item
+          共用スペース
+          ソファベッド１
+      .room-left-content__calender
+        %h4
+          予約可能状況
+        %span.item
+          %h5
+            2018年8月
+          %table
+            %tr
+              %td
+                日
+              %td
+                月
+              %td
+                火
+              %td
+                水
+              %td
+                木
+              %td
+                金
+              %td
+                土
+            %tr
+              %td
+                1
+              %td
+                2
+              %td
+                3
+              %td
+                4
+              %td
+                5
+              %td
+                6
+              %td
+                7
+            %tr
+              %td
+                8
+              %td
+                9
+              %td
+                10
+              %td
+                11
+              %td
+                12
+              %td
+                13
+              %td
+                14
+            %tr
+              %td
+                15
+              %td
+                16
+              %td
+                17
+              %td
+                18
+              %td
+                19
+              %td
+                20
+              %td
+                21
+            %tr
+              %td
+                22
+              %td
+                23
+              %td
+                24
+              %td
+                25
+              %td
+                26
+              %td
+                27
+              %td
+                28
+            %tr
+              %td
+                29
+              %td
+                30
+              %td
+                31
+              %td
+
+              %td
+
+              %td
+
+              %td
+        %p
+          日付を入力すると合計金額が表示されます（税・サービス料別）。
+
+      .room-left-content__house-rule
+        %h4
+          ハウスルール
+        %span.item
+          ペットお断り
+        %span.item
+          パーティー&イベントお断り
+        %span.item
+          チェックインは14:00から
+        %span.item
+          10:00までにチェックアウト
+    .room-right-content
+      / - if user_signed_in? && @room.user_id == current_user.id
+      /   = link_to '削除する', room_path(@room), method: 'delete', class: 'btn-small-red'
+      / - else
+      /   = link_to '予約する', new_room_reservation_path(@room), class: 'btn-small-green'
+      .room-right-content__reservation
+        .room-info
+          .price
+            %span.price-num ¥10000
+            %span.price-day /1泊
+          .rate.rate5
+        = form_for [@room, @room.reservations.new] do |f|
+          .label
+            日付
+          .field
+            = f.date_field :check_in_date, class: 'date'
+            = f.date_field :check_out_date, class: 'date'
+          .label
+            人数
+          .field
+            = f.number_field :guests, min: 1, max: @room.capacity, class: 'guests'
+          .field
+            = f.submit '予約をリクエスト', class: 'btn-large-red'
+    .clear
